@@ -1,12 +1,12 @@
 import { embed, embedMany } from 'ai';
-import { openai } from '@ai-sdk/openai';
+import { mistral } from '@ai-sdk/mistral';
 import { desc, gt, sql, cosineDistance } from 'drizzle-orm';
 import { chunk } from 'llm-chunk';
 
 import { db } from '@/lib/db';
 import { embeddings } from '@/lib/db/schema/embeddings';
 
-const embeddingModel = openai.embedding('text-embedding-3-small');
+const embeddingModel = mistral.textEmbedding(process.env.MISTRAL_EMBEDDING_MODEL ?? 'mistral-embed');
 
 export const generateEmbeddings = async (value: string): Promise<Array<{ embedding: number[]; content: string }>> => {
   const chunks = chunk(value);

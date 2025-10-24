@@ -6,7 +6,7 @@ import {
   createUIMessageStreamResponse,
   convertToModelMessages,
 } from 'ai';
-import { openai } from '@ai-sdk/openai';
+import { mistral } from '@ai-sdk/mistral';
 import { setAIContext } from '@auth0/ai-vercel';
 import { errorSerializer, withInterruptions } from '@auth0/ai-vercel/interrupts';
 
@@ -18,6 +18,7 @@ import { shopOnlineTool } from '@/lib/tools/shop-online';
 import { getContextDocumentsTool } from '@/lib/tools/context-docs';
 
 const date = new Date().toISOString();
+const mistralModelId = process.env.MISTRAL_CHAT_MODEL ?? 'mistral-small-latest';
 
 const AGENT_SYSTEM_TEMPLATE = `You are a personal assistant named Assistant0. You are a helpful assistant that can answer questions and help with tasks. 
 You have access to a set of tools. When using tools, you MUST provide valid JSON arguments. Always format tool call arguments as proper JSON objects.
@@ -50,7 +51,7 @@ export async function POST(req: NextRequest) {
     execute: withInterruptions(
       async ({ writer }) => {
         const result = streamText({
-          model: openai.chat('gpt-4o-mini'),
+          model: mistral(mistralModelId),
           system: AGENT_SYSTEM_TEMPLATE,
           messages: modelMessages,
           tools: tools as any,
