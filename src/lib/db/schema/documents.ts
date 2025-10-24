@@ -26,6 +26,7 @@ export const documents = pgTable('documents', {
     .default(sql`now()`),
   userId: varchar('user_id', { length: 191 }).notNull(),
   userEmail: varchar('user_email', { length: 191 }).notNull(),
+  workspaceId: varchar('workspace_id', { length: 191 }),
   sharedWith: varchar('shared_with', { length: 300 }).array(),
 });
 

@@ -37,6 +37,25 @@ async function main() {
           viewer: { this: {} },
         },
       },
+      {
+        type: 'workspace',
+        metadata: {
+          relations: {
+            can_access: {},
+            owner: { directly_related_user_types: [{ type: 'user' }] },
+            member: { directly_related_user_types: [{ type: 'user' }] },
+          },
+        },
+        relations: {
+          can_access: {
+            union: {
+              child: [{ computedUserset: { relation: 'owner' } }, { computedUserset: { relation: 'member' } }],
+            },
+          },
+          owner: { this: {} },
+          member: { this: {} },
+        },
+      },
     ],
   });
 
