@@ -29,7 +29,8 @@ cd auth0-assistant0/ts-vercel-ai
 
 Next, you'll need to set up environment variables in your repo's `.env.local` file. Copy the `.env.example` file to `.env.local`.
 
-- To start with the examples, you'll just need to add your OpenAI API key and Auth0 credentials for the Web app and Machine to Machine App.
+- To start with the examples, you'll just need to add your Mistral API key and Auth0 credentials for the Web app and Machine to Machine App.
+  - Optionally override the defaults by setting `MISTRAL_CHAT_MODEL` and `MISTRAL_EMBEDDING_MODEL` in your `.env.local` file.
   - You can setup a new Auth0 tenant with an Auth0 Web App and Token Vault following the Prerequisites instructions [here](https://auth0.com/ai/docs/call-others-apis-on-users-behalf).
   - Click on the tenant name on the [Quickstarts](https://auth0.com/ai/docs/call-your-apis-on-users-behalf), Go to the app settings (**Applications** -> **Applications** -> **WebApp Quickstart Client** -> **Settings** -> **Advanced Settings** -> **Grant Types**) and enable the CIBA grant and save.
   - For Async Authorizations, you can setup Guardian Push and Enroll the your user for Guardian following the Prerequisites instructions [here](https://auth0.com/ai/docs/async-authorization).

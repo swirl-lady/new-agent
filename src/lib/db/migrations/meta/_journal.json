@@ -15,6 +15,13 @@
       "when": 1746716710750,
       "tag": "0000_embeddings",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1761309000000,
+      "tag": "0001_mistral_embeddings",
+      "breakpoints": true
     }
   ]
 }
