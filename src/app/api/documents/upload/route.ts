@@ -44,6 +44,7 @@ export async function POST(request: NextRequest) {
         fileName: file.name,
         fileType: file.type,
         sharedWith: [],
+        workspaceId: null,
       },
       content,
     );

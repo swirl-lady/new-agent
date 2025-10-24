@@ -12,15 +12,27 @@ import { generateEmbeddings } from '@/lib/rag/embedding';
 import { embeddings as embeddingsTable } from '@/lib/db/schema/embeddings';
 import { addRelation, deleteRelation } from '@/lib/fga/fga';
 import { auth0 } from '@/lib/auth0';
+import { ensureDefaultWorkspace } from '@/lib/workspaces/helpers';
 
 export const createDocument = async (input: NewDocumentParams, text: string) => {
   const session = await auth0.getSession();
   const user = session?.user!;
-  const { content, fileName, fileType, sharedWith } = insertDocumentSchema.parse(input);
+  const { content, fileName, fileType, sharedWith, workspaceId } = insertDocumentSchema.parse(input);
+
+  const normalizedSharedWith = sharedWith ?? [];
+  const finalWorkspaceId = workspaceId ?? (await ensureDefaultWorkspace(user.sub, user.email!))?.id ?? null;
 
   const [document] = await db
     .insert(documentsTable)
-    .values({ content, fileName, fileType, userId: user.sub, userEmail: user.email!, sharedWith })
+    .values({
+      content,
+      fileName,
+      fileType,
+      userId: user.sub,
+      userEmail: user.email!,
+      sharedWith: normalizedSharedWith,
+      workspaceId: finalWorkspaceId,
+    })
     .returning();
 
   const embeddings = await generateEmbeddings(text);

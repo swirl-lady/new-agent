@@ -1,8 +1,39 @@
 # Assistant0: An AI Personal Assistant Secured with Auth0 - Vercel AI Version
 
-Assistant0 an AI personal assistant that consolidates your digital life by dynamically accessing multiple tools to help you stay organized and efficient.
+> **🏆 Built for the [Auth0 AI Agents Challenge](https://dev.to/challenges/auth0-2025-10-08)**
+
+Assistant0 is an AI personal assistant that consolidates your digital life by dynamically accessing multiple tools to help you stay organized and efficient. Built with production-ready security, comprehensive audit trails, and Auth0's Fine-Grained Authorization.
 
 ![Architecture](./public/images/arch-bg.png)
+
+## 🎯 Challenge Features
+
+### 🔐 Mission Control - Comprehensive Audit Trail
+Every agent action logged with Auth0 context, risk assessment, and full provenance for compliance.
+- Real-time dashboard with success/failure metrics
+- Timeline view of all tool calls with inputs/outputs
+- Risk scoring (low/medium/high) on every action
+- [Learn more →](./AUTH0_CHALLENGE_FEATURES.md#mission-control)
+
+### ⚡ Risk-Adaptive Authorization
+Intelligent risk assessment triggers step-up authentication for sensitive operations.
+- Automatic scoring based on tool sensitivity, action type, and transaction value
+- Integration-ready for Auth0 Guardian/WebAuthn
+- [Learn more →](./AUTH0_CHALLENGE_FEATURES.md#risk-adaptive-authorization)
+
+### 🗂️ Workspace Personas
+Multi-context isolation powered by Auth0 FGA - work docs never leak into personal context.
+- Create separate Work, Personal, Family contexts
+- Fine-grained access control per workspace
+- [Learn more →](./AUTH0_CHALLENGE_FEATURES.md#workspace-personas)
+
+### 🤖 Automation Playbooks (Coming Soon)
+Recurring agent workflows with Auth0-secured delegation.
+- Schedule automations with delegated credentials
+- Respect FGA boundaries across executions
+- [Learn more →](./AUTH0_CHALLENGE_FEATURES.md#automation-playbooks)
+
+👉 **[Full Feature Documentation](./AUTH0_CHALLENGE_FEATURES.md)** | **[Implementation Guide](./CHALLENGE_IMPLEMENTATION_GUIDE.md)**
 
 ## About the template
 
